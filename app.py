@@ -116,6 +116,10 @@ def choose_action():
         state_key = tuple('Green' if waiting_time_history[side] < 20 else 'Red' for side in sides)
         return max(q_table.get(state_key, {}).items(), key=lambda x: x[1])[0]
 
+@app.route('/')
+def home():
+    return "Welcome to the Traffic Management System API!"
+
 @app.route('/get-traffic-signal', methods=['GET'])
 def get_traffic_signal():
     traffic_data = generate_traffic_data()
